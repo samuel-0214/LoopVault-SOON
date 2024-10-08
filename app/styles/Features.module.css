@@ -1,0 +1,64 @@
+@keyframes scrollLoop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.featuresSection {
+  padding: 5rem 2rem;
+  background-color: #000; /* Black background */
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.cardsWrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardsContainer {
+  display: flex;
+  gap: 2rem;
+  animation: scrollLoop 40s linear infinite;
+  min-width: 200%; /* Ensures the loop feels continuous */
+}
+
+.cardContainer {
+  flex-shrink: 0;
+  width: 350px;
+  height: 30rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.cardContainer:hover {
+  transform: scale(1.05);
+}
+
+.cardTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.cardDescription {
+  font-size: 1.2rem;
+  color: #dcdcdc;
+}
