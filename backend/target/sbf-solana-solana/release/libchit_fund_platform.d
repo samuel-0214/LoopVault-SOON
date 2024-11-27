@@ -1,0 +1,1 @@
+/home/samuel/Desktop/Projects/Loop-Vault-All-Main/Soon/LoopVault/backend/target/sbf-solana-solana/release/libchit_fund_platform.rlib: /home/samuel/Desktop/Projects/Loop-Vault-All-Main/Soon/LoopVault/backend/programs/chit_fund_platform/src/lib.rs

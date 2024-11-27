@@ -8,10 +8,10 @@ skip-lint = false
 chit_fund_platform = "7AEt2evGVZxnPxKHp2Nb5dNfPDPDdXJ9PexqtgdnHgF4"
 
 [registry]
-url = "https://api.apr.dev"
+url = "https://rpc.devnet.soo.network/rpc"
 
 [provider]
-cluster = "Localnet"
+cluster = "https://rpc.devnet.soo.network/rpc"
 wallet = "~/.config/solana/id.json"
 
 [scripts]

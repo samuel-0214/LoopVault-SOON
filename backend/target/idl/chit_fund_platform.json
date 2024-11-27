@@ -1,0 +1,867 @@
+{
+  "address": "7AEt2evGVZxnPxKHp2Nb5dNfPDPDdXJ9PexqtgdnHgF4",
+  "metadata": {
+    "name": "chit_fund_platform",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "disburse_funds",
+      "discriminator": [
+        45,
+        215,
+        174,
+        182,
+        93,
+        186,
+        217,
+        68
+      ],
+      "accounts": [
+        {
+          "name": "chit_fund",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  104,
+                  105,
+                  116,
+                  95,
+                  102,
+                  117,
+                  110,
+                  100
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "chit_fund.creator",
+                "account": "ChitFund"
+              }
+            ]
+          },
+          "relations": [
+            "borrower"
+          ]
+        },
+        {
+          "name": "contribution_vault",
+          "writable": true
+        },
+        {
+          "name": "borrower_token_account",
+          "writable": true
+        },
+        {
+          "name": "borrower",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "emergency_request",
+      "discriminator": [
+        57,
+        164,
+        95,
+        109,
+        43,
+        117,
+        155,
+        117
+      ],
+      "accounts": [
+        {
+          "name": "chit_fund",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  104,
+                  105,
+                  116,
+                  95,
+                  102,
+                  117,
+                  110,
+                  100
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "chit_fund.creator",
+                "account": "ChitFund"
+              }
+            ]
+          },
+          "relations": [
+            "participant"
+          ]
+        },
+        {
+          "name": "participant",
+          "writable": true
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "participant_token_account",
+          "writable": true
+        },
+        {
+          "name": "contribution_vault",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize_chit_fund",
+      "discriminator": [
+        139,
+        11,
+        202,
+        47,
+        72,
+        140,
+        116,
+        156
+      ],
+      "accounts": [
+        {
+          "name": "chit_fund",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  104,
+                  105,
+                  116,
+                  95,
+                  102,
+                  117,
+                  110,
+                  100
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "creator"
+              }
+            ]
+          }
+        },
+        {
+          "name": "creator",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "usdc_mint",
+          "address": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU"
+        }
+      ],
+      "args": [
+        {
+          "name": "contribution_amount",
+          "type": "u64"
+        },
+        {
+          "name": "cycle_duration",
+          "type": "i64"
+        },
+        {
+          "name": "total_cycles",
+          "type": "u64"
+        },
+        {
+          "name": "collateral_requirement",
+          "type": "u64"
+        },
+        {
+          "name": "max_participants",
+          "type": "u8"
+        },
+        {
+          "name": "disbursement_schedule",
+          "type": {
+            "vec": "u64"
+          }
+        }
+      ]
+    },
+    {
+      "name": "join_chit_fund",
+      "discriminator": [
+        213,
+        43,
+        139,
+        99,
+        65,
+        251,
+        177,
+        6
+      ],
+      "accounts": [
+        {
+          "name": "chit_fund",
+          "writable": true
+        },
+        {
+          "name": "participant",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  114,
+                  116,
+                  105,
+                  99,
+                  105,
+                  112,
+                  97,
+                  110,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "chit_fund"
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "user_token_account",
+          "writable": true
+        },
+        {
+          "name": "collateral_vault",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "usdc_mint",
+          "address": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "make_contribution",
+      "discriminator": [
+        2,
+        33,
+        6,
+        104,
+        211,
+        177,
+        128,
+        109
+      ],
+      "accounts": [
+        {
+          "name": "chit_fund",
+          "writable": true,
+          "relations": [
+            "participant"
+          ]
+        },
+        {
+          "name": "participant",
+          "writable": true
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "user_token_account",
+          "writable": true
+        },
+        {
+          "name": "contribution_vault",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "set_current_cycle",
+      "discriminator": [
+        160,
+        60,
+        245,
+        227,
+        19,
+        234,
+        114,
+        128
+      ],
+      "accounts": [
+        {
+          "name": "chit_fund",
+          "writable": true
+        },
+        {
+          "name": "authority",
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "new_cycle",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "withdraw_collateral",
+      "discriminator": [
+        115,
+        135,
+        168,
+        106,
+        139,
+        214,
+        138,
+        150
+      ],
+      "accounts": [
+        {
+          "name": "chit_fund",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  104,
+                  105,
+                  116,
+                  95,
+                  102,
+                  117,
+                  110,
+                  100
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "chit_fund.creator",
+                "account": "ChitFund"
+              }
+            ]
+          },
+          "relations": [
+            "participant"
+          ]
+        },
+        {
+          "name": "participant",
+          "writable": true
+        },
+        {
+          "name": "participant_token_account",
+          "writable": true
+        },
+        {
+          "name": "collateral_vault",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "ChitFund",
+      "discriminator": [
+        76,
+        35,
+        196,
+        131,
+        178,
+        61,
+        223,
+        197
+      ]
+    },
+    {
+      "name": "Participant",
+      "discriminator": [
+        32,
+        142,
+        108,
+        79,
+        247,
+        179,
+        54,
+        6
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "ChitFundInitialized",
+      "discriminator": [
+        221,
+        201,
+        235,
+        227,
+        234,
+        194,
+        211,
+        168
+      ]
+    },
+    {
+      "name": "CollateralWithdrawn",
+      "discriminator": [
+        51,
+        224,
+        133,
+        106,
+        74,
+        173,
+        72,
+        82
+      ]
+    },
+    {
+      "name": "ContributionMade",
+      "discriminator": [
+        81,
+        218,
+        72,
+        109,
+        93,
+        96,
+        131,
+        199
+      ]
+    },
+    {
+      "name": "EmergencyFundsDisbursed",
+      "discriminator": [
+        238,
+        122,
+        121,
+        243,
+        210,
+        189,
+        121,
+        85
+      ]
+    },
+    {
+      "name": "FundsDisbursed",
+      "discriminator": [
+        96,
+        15,
+        142,
+        196,
+        147,
+        229,
+        222,
+        54
+      ]
+    },
+    {
+      "name": "ParticipantJoined",
+      "discriminator": [
+        48,
+        182,
+        206,
+        15,
+        56,
+        181,
+        24,
+        253
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "MaxParticipantsReached",
+      "msg": "Maximum number of participants reached."
+    },
+    {
+      "code": 6001,
+      "name": "InsufficientCollateral",
+      "msg": "Insufficient collateral provided."
+    },
+    {
+      "code": 6002,
+      "name": "ContributionAlreadyMade",
+      "msg": "Contribution for this cycle has already been made."
+    },
+    {
+      "code": 6003,
+      "name": "PendingContributions",
+      "msg": "Not all participants have made their contributions."
+    },
+    {
+      "code": 6004,
+      "name": "ParticipantNotFound",
+      "msg": "Participant not found."
+    },
+    {
+      "code": 6005,
+      "name": "InvalidBorrowerAccount",
+      "msg": "Invalid borrower account."
+    },
+    {
+      "code": 6006,
+      "name": "ChitFundInactive",
+      "msg": "The chit fund is not active."
+    },
+    {
+      "code": 6007,
+      "name": "ChitFundActive",
+      "msg": "The chit fund is still active."
+    },
+    {
+      "code": 6008,
+      "name": "CycleNotComplete",
+      "msg": "The cycle is not yet complete."
+    },
+    {
+      "code": 6009,
+      "name": "InvalidCollateralMint",
+      "msg": "Invalid Collateral Mint."
+    },
+    {
+      "code": 6010,
+      "name": "InvalidCollateralVaultOwner",
+      "msg": "Invalid Collateral Vault Owner."
+    },
+    {
+      "code": 6011,
+      "name": "InvalidContributionMint",
+      "msg": "Invalid Contribution Mint."
+    },
+    {
+      "code": 6012,
+      "name": "InvalidContributionVaultOwner",
+      "msg": "Invalid Contribution Vault Owner."
+    },
+    {
+      "code": 6013,
+      "name": "ExceedsMaximumCycles",
+      "msg": "Exceeds the maximum number of cycles."
+    },
+    {
+      "code": 6014,
+      "name": "InvalidCycle",
+      "msg": "Invalid cycle for disbursement."
+    },
+    {
+      "code": 6015,
+      "name": "AlreadyBorrowed",
+      "msg": "Participant has already borrowed."
+    },
+    {
+      "code": 6016,
+      "name": "Unauthorized",
+      "msg": "Unauthorized access."
+    },
+    {
+      "code": 6017,
+      "name": "InvalidDisbursementSchedule",
+      "msg": "Invalid disbursement schedule."
+    },
+    {
+      "code": 6018,
+      "name": "ExceedsMaximumParticipants",
+      "msg": "Exceeds the maximum number of participants allowed."
+    }
+  ],
+  "types": [
+    {
+      "name": "ChitFund",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "creator",
+            "type": "pubkey"
+          },
+          {
+            "name": "contribution_amount",
+            "type": "u64"
+          },
+          {
+            "name": "cycle_duration",
+            "type": "i64"
+          },
+          {
+            "name": "total_cycles",
+            "type": "u64"
+          },
+          {
+            "name": "collateral_requirement",
+            "type": "u64"
+          },
+          {
+            "name": "current_cycle",
+            "type": "u64"
+          },
+          {
+            "name": "max_participants",
+            "type": "u8"
+          },
+          {
+            "name": "is_active",
+            "type": "bool"
+          },
+          {
+            "name": "participants",
+            "type": {
+              "vec": "pubkey"
+            }
+          },
+          {
+            "name": "last_disbursement_time",
+            "type": "i64"
+          },
+          {
+            "name": "disbursement_schedule",
+            "type": {
+              "vec": "u64"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ChitFundInitialized",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "chit_fund",
+            "type": "pubkey"
+          },
+          {
+            "name": "creator",
+            "type": "pubkey"
+          },
+          {
+            "name": "contribution_amount",
+            "type": "u64"
+          },
+          {
+            "name": "total_cycles",
+            "type": "u64"
+          },
+          {
+            "name": "max_participants",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CollateralWithdrawn",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "chit_fund",
+            "type": "pubkey"
+          },
+          {
+            "name": "participant",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ContributionMade",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "chit_fund",
+            "type": "pubkey"
+          },
+          {
+            "name": "participant",
+            "type": "pubkey"
+          },
+          {
+            "name": "cycle",
+            "type": "u64"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EmergencyFundsDisbursed",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "chit_fund",
+            "type": "pubkey"
+          },
+          {
+            "name": "participant",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "cycle",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FundsDisbursed",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "chit_fund",
+            "type": "pubkey"
+          },
+          {
+            "name": "borrower",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "cycle",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Participant",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "wallet",
+            "type": "pubkey"
+          },
+          {
+            "name": "chit_fund",
+            "type": "pubkey"
+          },
+          {
+            "name": "has_borrowed",
+            "type": "bool"
+          },
+          {
+            "name": "contributions",
+            "type": {
+              "vec": "bool"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ParticipantJoined",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "chit_fund",
+            "type": "pubkey"
+          },
+          {
+            "name": "participant",
+            "type": "pubkey"
+          },
+          {
+            "name": "wallet",
+            "type": "pubkey"
+          }
+        ]
+      }
+    }
+  ]
+}
